@@ -1,15 +1,31 @@
 {
-  "name": "vite-lib-template",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "@armin4fun/vite-lib-template",
+  "private": false,
+  "version": "0.0.1",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/lib-name.cjs.js", 
+  "module": "./dist/lib-name.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lib-name.es.js",
+      "require": "./dist/lib-name.cjs.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc -p tsconfig.app.json",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^22.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
